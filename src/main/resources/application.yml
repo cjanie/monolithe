@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:hsqldb:file:data # hsql database on a file which name is data
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update # to update the schema when changes are affecting the database 
+    show-sql: true # to view the SQL requests
+
+      
