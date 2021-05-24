@@ -1,6 +1,11 @@
 package com.spring.monolithe.controllers;
 
+import java.util.List;
+
+import com.spring.monolithe.entities.User;
+import com.spring.monolithe.exceptions.DatabaseException;
 import com.spring.monolithe.feignclients.OpenStreetMapClient;
+import com.spring.monolithe.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
     @Autowired
-    OpenStreetMapClient openStreetMapClient;
+    private UserService userService;
+
+    @Autowired
+    private OpenStreetMapClient openStreetMapClient;
+
+    @GetMapping(value = "/users")
+    public List<User> getUsers() throws DatabaseException {
+        return this.userService.list();
+    }
 
     // OSM Ways
 
