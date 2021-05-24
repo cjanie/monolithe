@@ -2,10 +2,10 @@ package com.spring.monolithe.controllers;
 
 import java.util.List;
 
-import com.spring.monolithe.entities.User;
+import com.spring.monolithe.entities.Locality;
 import com.spring.monolithe.exceptions.DatabaseException;
 import com.spring.monolithe.feignclients.OpenStreetMapClient;
-import com.spring.monolithe.services.UserService;
+import com.spring.monolithe.services.LocalityService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,15 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class MainController {
 
     @Autowired
-    private UserService userService;
+    private LocalityService localityService;
 
     @Autowired
     private OpenStreetMapClient openStreetMapClient;
 
-    @GetMapping(value = "/users")
-    public List<User> getUsers() throws DatabaseException {
-        return this.userService.list();
+    @GetMapping(value = "/localities")
+    public List<Locality> getLocalities() throws DatabaseException {
+        return this.localityService.list();
     }
+
 
     // OSM Ways
 
